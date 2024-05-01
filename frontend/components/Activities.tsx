@@ -17,6 +17,7 @@ const activitiesList = [
 
 const Activities: React.FC = () => {
 	const [tickedActivities, setTickedActivities] = useState<string[]>([])
+	const [summarizedText, setSummarizedText] = useState<string>('')
 
 	const handleActivityChange = (activity: string) => {
 		if (tickedActivities.includes(activity)) {
@@ -36,8 +37,8 @@ const Activities: React.FC = () => {
 				activites: tickedActivities,
 			})
 			console.log(data, 'what is data??')
-			/* setDataFetched(data.data)
-			setError(null) */
+			setSummarizedText(data.data)
+			//setError(null)
 		} catch (err) {
 			console.log(err, 'what is err?')
 		}
@@ -59,7 +60,10 @@ const Activities: React.FC = () => {
 					</label>
 				</div>
 			))}
+			<br></br>
 			<Button onClick={handleFetchData} text={'Fetch data'} />
+			<br></br>
+			<p className='mb-3 mt-3'>{summarizedText ? summarizedText : null}</p>
 		</div>
 	)
 }
