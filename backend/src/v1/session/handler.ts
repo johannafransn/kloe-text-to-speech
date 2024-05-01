@@ -31,23 +31,24 @@ export async function getSpeechToText(
     const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 
 
-    const mp3 = await openai.audio.speech.create({
-      model: 'tts-1',
-      voice: 'alloy',
-      input: 'the quick brown fox jumped over the lazy dogs',
-    });
-
-    const buffer = Buffer.from(await mp3.arrayBuffer());
-    await fs.promises.writeFile(speechFile, buffer);
-
-    const transcription = await openai.audio.transcriptions.create({
-      file: await toFile(buffer, 'speech.mp3'),
-      model: 'whisper-1',
-    });
-    console.log(transcription.text);
-
-
-    rep.code(STANDARD.SUCCESS).send({ data: transcription.text });
+    console.log(req.body, 'what is REQ?')
+    /*  const mp3 = await openai.audio.speech.create({
+       model: 'tts-1',
+       voice: 'alloy',
+       input: 'the quick brown fox jumped over the lazy dogs',
+     });
+ 
+     const buffer = Buffer.from(await mp3.arrayBuffer());
+     await fs.promises.writeFile(speechFile, buffer);
+ 
+     const transcription = await openai.audio.transcriptions.create({
+       file: await toFile(buffer, 'speech.mp3'),
+       model: 'whisper-1',
+     });
+     console.log(transcription.text);
+ 
+ 
+     rep.code(STANDARD.SUCCESS).send({ data: transcription.text }); */
   } catch (error) {
     console.log(error, 'what is err?')
     rep.code(ERROR500.statusCode).send({ msg: ERROR500.message });

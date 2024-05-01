@@ -16,13 +16,13 @@ const ApiMethods = {
 const ApiService = {
 
 
-	postSpeechAndGetText: async (formData: any) => {
+	postActivitiesAndGetText: async (data: any) => {
 		const API_ENDPOINT = '/v1/session/authenticated/data'
 		const url = `${API_BASE_URL}${API_ENDPOINT}`
 		const options = {
 			method: ApiMethods.POST,
 			headers: HEADERS,
-			body: formData,
+			body: JSON.stringify(data),
 		}
 		const response = await fetch(url, options)
 

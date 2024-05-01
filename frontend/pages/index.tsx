@@ -4,7 +4,7 @@ import Section from '@/components/section'
 import Button from '@/components/button'
 import { useRouter } from 'next/navigation'
 import ApiService from '@/api/service'
-import Recording from '@/components/Recording'
+import Activities from '@/components/Activities'
 
 const Index = () => {
 	const [dataFetched, setDataFetched] = useState<string | null>(null)
@@ -29,8 +29,7 @@ const Index = () => {
 							Kloe AI Example
 						</h2>
 
-						<Recording />
-						<Button onClick={handleFetchData} text={'Fetch data'} />
+						<Activities />
 						{error ? `${error} Unauthorized` : dataFetched}
 					</div>
 				</Section>
