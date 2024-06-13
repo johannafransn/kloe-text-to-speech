@@ -1,1 +1,1 @@
-Testing out chat GPT and other LLMs for creating healthcare + ai application usecases
+Testing out chat GPT APIs and other LLMs for creating healthcare + ai application usecases
